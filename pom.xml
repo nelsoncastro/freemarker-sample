@@ -111,7 +111,7 @@
         <maven-source-plugin.version>2.3</maven-source-plugin.version>
 
         <!-- Test Dependencies -->
-        <spring.version>4.1.4.RELEASE</spring.version>
+        <spring.version>4.3.17.RELEASE</spring.version>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
 
