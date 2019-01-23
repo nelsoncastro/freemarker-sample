@@ -14,8 +14,8 @@ public class App {
 
     public static void main(String[] args) {
         Mail mail = new Mail();
-        mail.setMailFrom("nelsoncastro.developer@gmail.com");
-        mail.setMailTo("nelsoncastro.developer@gmail.com");
+        mail.setMailFrom("atendimentocabal@cabal.com.br");
+        mail.setMailTo("fulano@gmail.com");
         mail.setMailSubject("CABAL - SOLICITAÇÃO DE CHARGEBACK");
 
         Map<String, Object> model = new HashMap<>();

@@ -27,9 +27,7 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public void sendMail(Mail mail) {
-
         MimeMessage mimeMessage = mailSender.createMimeMessage();
-
         try {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setSubject(mail.getMailSubject());
@@ -49,8 +47,7 @@ public class MailServiceImpl implements MailService {
     private String getContentFromTemplate(Map<String, Object> model) {
         StringBuffer content = new StringBuffer();
         try {
-            content.append(FreeMarkerTemplateUtils.processTemplateIntoString(
-                    configuration.getTemplate("mail.ftl"), model));
+            content.append(FreeMarkerTemplateUtils.processTemplateIntoString(configuration.getTemplate("mail.ftl"), model));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

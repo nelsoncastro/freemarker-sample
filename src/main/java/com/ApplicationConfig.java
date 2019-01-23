@@ -42,8 +42,7 @@ public class ApplicationConfig {
     public FreeMarkerConfigurationFactoryBean getFreeMarkerConfiguration() {
         FreeMarkerConfigurationFactoryBean cfg = new FreeMarkerConfigurationFactoryBean();
         cfg.setTemplateLoaderPath("/templates/");
-        cfg.setDefaultEncoding("UTF-8");
+        cfg.setDefaultEncoding("ISO-8859-1");
         return cfg;
     }
-
 }
