@@ -27,20 +27,20 @@ public class Sample {
         /* You usually do these for MULTIPLE TIMES in the application life-cycle: */
 
         Map<String, Object> root = new HashMap<>();
-        root.put("user", "Big Joe");
-        root.put("title", "Our latest product:");
-
-        root.put("from", "nelsoncastro.developer@gmail.com");
-        root.put("body", "Lista de produtos para sua alegria.");
-
-        Product latest = new Product();
-        latest.setUrl("products/greenmouse.html");
-        latest.setName("green mouse");
-
-        root.put("latestProduct", latest);
+//        root.put("user", "Big Joe");
+//        root.put("title", "Our latest product:");
+//
+//        root.put("from", "nelsoncastro.developer@gmail.com");
+//        root.put("body", "Lista de produtos para sua alegria.");
+//
+//        Product latest = new Product();
+//        latest.setUrl("products/greenmouse.html");
+//        latest.setName("green mouse");
+//
+//        root.put("latestProduct", latest);
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("template2.ftl");
+        Template temp = cfg.getTemplate("mail.ftl");
 
         /* Merge data-model with template */
         Writer out = new OutputStreamWriter(System.out);

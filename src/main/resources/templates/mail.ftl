@@ -1,13 +1,7 @@
-<html>
+<#import "lib/utils.ftl" as u>
+<@u.mailtempalte title="Solicitação de Chargeback" name="Fulano de tal" location="Brasília, 23 de janeiro de 2019">
 
-<head></head>
 
-<body>
-<p>Dear ${firstName} ${lastName},</p>
-<p>Sending Email using Spring 4 with <b>FreeMarker template !!!</b></p>
-<p>Thanks</p>
-<p>${signature}</p>
-<p>${location}</p>
-</body>
 
-</html>
+
+</@u.mailtempalte>

@@ -48,14 +48,12 @@ public class MailServiceImpl implements MailService {
 
     private String getContentFromTemplate(Map<String, Object> model) {
         StringBuffer content = new StringBuffer();
-
         try {
             content.append(FreeMarkerTemplateUtils.processTemplateIntoString(
                     configuration.getTemplate("mail.ftl"), model));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return content.toString();
     }
 }

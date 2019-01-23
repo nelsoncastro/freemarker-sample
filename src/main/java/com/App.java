@@ -13,17 +13,12 @@ import java.util.Map;
 public class App {
 
     public static void main(String[] args) {
-
         Mail mail = new Mail();
-        mail.setMailFrom("your-email@gmail.com");
-        mail.setMailTo("your-email@gmail.com");
-        mail.setMailSubject("Spring - Email with FreeMarker template");
+        mail.setMailFrom("nelsoncastro.developer@gmail.com");
+        mail.setMailTo("nelsoncastro.developer@gmail.com");
+        mail.setMailSubject("CABAL - SOLICITAÇÃO DE CHARGEBACK");
 
         Map<String, Object> model = new HashMap<>();
-        model.put("firstName", "Cabal");
-        model.put("lastName", "Brasil");
-        model.put("location", "Brasília-DF");
-        model.put("signature", "www.cabalbrasil.com.br");
         mail.setModel(model);
 
         AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
