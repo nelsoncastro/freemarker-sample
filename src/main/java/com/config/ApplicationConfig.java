@@ -1,4 +1,4 @@
-package com;
+package com.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,11 +8,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 
 import java.util.Properties;
-
-/**
- * @author <a href='http://programmerinaction'>Nelson Castro</a>
- * @since 1.0
- */
 
 @Configuration
 @ComponentScan(basePackages = "com")

@@ -22,9 +22,6 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
-    private Configuration configuration;
-
     @Override
     public void sendMail(Mail mail) {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
@@ -33,7 +30,6 @@ public class MailServiceImpl implements MailService {
             mimeMessageHelper.setSubject(mail.getMailSubject());
             mimeMessageHelper.setFrom(mail.getMailFrom());
             mimeMessageHelper.setTo(mail.getMailTo());
-            mail.setMailContent(getContentFromTemplate(mail.getModel()));
             mimeMessageHelper.setText(mail.getMailContent(), true);
 
             mailSender.send(mimeMessageHelper.getMimeMessage());
@@ -41,16 +37,5 @@ public class MailServiceImpl implements MailService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-
-    }
-
-    private String getContentFromTemplate(Map<String, Object> model) {
-        StringBuffer content = new StringBuffer();
-        try {
-            content.append(FreeMarkerTemplateUtils.processTemplateIntoString(configuration.getTemplate("mail.ftl"), model));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return content.toString();
     }
 }
