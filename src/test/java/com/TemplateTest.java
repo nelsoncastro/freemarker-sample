@@ -3,6 +3,7 @@ package com;
 import com.config.ApplicationConfig;
 import com.model.service.MailService;
 import com.util.mail.Mail;
+import com.util.notification.NotificationTemplate;
 import com.util.notification.Processors.NotificationProcessor;
 import org.junit.Test;
 import org.junit.runner.RunWith;

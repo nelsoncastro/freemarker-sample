@@ -1,4 +1,4 @@
-package com;
+package com.util.notification;
 
 import lombok.Getter;
 
@@ -24,7 +24,7 @@ public class NotificationTemplate implements Serializable {
         this.entidadeRequerida = builder.entidadeRequerida;
     }
 
-    static class Builder {
+    public static class Builder {
         String mensagem;
         String solicitante;
         String numeroChargeback;
@@ -32,7 +32,7 @@ public class NotificationTemplate implements Serializable {
         String entidadeSolicitante;
         String entidadeRequerida;
 
-        Builder(String mensagem, String solicitante, String numeroChargeback, BigDecimal valorDisputa, String entidadeSolicitante, String entidadeRequerida) {
+        public Builder(String mensagem, String solicitante, String numeroChargeback, BigDecimal valorDisputa, String entidadeSolicitante, String entidadeRequerida) {
             this.mensagem = mensagem;
             this.solicitante = solicitante;
             this.numeroChargeback = numeroChargeback;
@@ -41,7 +41,7 @@ public class NotificationTemplate implements Serializable {
             this.entidadeRequerida = entidadeRequerida;
         }
 
-        NotificationTemplate build() {
+        public NotificationTemplate build() {
             return new NotificationTemplate(this);
         }
     }
