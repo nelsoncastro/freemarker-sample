@@ -3,6 +3,7 @@ package com.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
@@ -11,6 +12,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "com")
+@EnableAspectJAutoProxy
 public class ApplicationConfig {
 
     @Bean
@@ -19,8 +21,8 @@ public class ApplicationConfig {
 
         mailSender.setHost("127.0.0.1");
         mailSender.setPort(587);
-        mailSender.setUsername("nelsoncastro.developer@gmail.com");
-        mailSender.setPassword("12345");
+        mailSender.setUsername("username");
+        mailSender.setPassword("password");
 
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");

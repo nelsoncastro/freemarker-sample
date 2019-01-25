@@ -1,4 +1,4 @@
-<#import "lib/utils.ftl" as u>
+<#import "../lib/utils.ftl" as u>
 
 <#escape x as x?html>
     <@u.mailtempalte>
