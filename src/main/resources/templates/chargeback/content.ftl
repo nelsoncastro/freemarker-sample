@@ -3,7 +3,7 @@
 <#escape x as x?html>
     <@u.mailtempalte>
         <p>Sr. ${dado.solicitante},</p>
-        <p>${dado.mensagem}</p>
+        <p>${mensagem}</p>
         <p>Informações referentes a sua solicitação:</p>
         <table>
             <tr>

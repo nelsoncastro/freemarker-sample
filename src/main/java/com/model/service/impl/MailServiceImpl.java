@@ -1,7 +1,7 @@
 package com.model.service.impl;
 
-import com.util.mail.Mail;
 import com.model.service.MailService;
+import com.util.mail.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -9,11 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-
-/**
- * @author <a href='http://programmerinaction'>Nelson Castro</a>
- * @since 1.0
- */
 
 @Service("mailService")
 public class MailServiceImpl implements MailService {

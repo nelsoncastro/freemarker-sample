@@ -2,7 +2,6 @@
 
 <#escape x as x?html>
     <@u.mailtempalte>
-        <p>Sr. ${solicitante},</p>
         <p>${mensagem}</p>
     </@u.mailtempalte>
 </#escape>

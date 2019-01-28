@@ -3,6 +3,7 @@ package com;
 import com.config.ApplicationConfig;
 import com.model.entity.Chargeback;
 import com.model.service.ChargebackService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,23 @@ public class InterceptorTest {
 
     @Test
     public void interceptorTest() {
-        Chargeback chargeback = new Chargeback(1L, "TIO PATINHAS", "0000000001",
-                new BigDecimal(100), "BANCO TIO PATINHAS", "SOBRINHOS TIO PATINHAS");
+        Chargeback chargeback = new Chargeback.Builder("TIO PATINHAS", "0000000001",
+                new BigDecimal(100), "BANCO TIO PATINHAS", "SOBRINHOS TIO PATINHAS",
+                "tio.patinhas").build();
 
-        chargebackService.generateChargeback(chargeback);
+        chargeback = chargebackService.create(chargeback);
+        Long expected = 1L;
+        Assert.assertEquals(expected, chargeback.getId());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void interceptorNotCaptureTest() {
+        Chargeback chargeback = new Chargeback.Builder(null, "0000000001",
+                new BigDecimal(100), "BANCO TIO PATINHAS", "SOBRINHOS TIO PATINHAS",
+                "tio.patinhas").build();
+
+        chargeback = chargebackService.create(chargeback);
+        Long expected = 1L;
+        Assert.assertEquals(expected, chargeback.getId());
     }
 }

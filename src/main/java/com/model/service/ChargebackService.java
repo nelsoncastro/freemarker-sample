@@ -6,5 +6,5 @@ import java.io.Serializable;
 
 public interface ChargebackService extends Serializable {
 
-    void generateChargeback(Chargeback chargeback);
+    Chargeback create(Chargeback chargeback);
 }

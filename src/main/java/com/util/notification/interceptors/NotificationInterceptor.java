@@ -6,10 +6,9 @@ import com.model.enums.NotificationType;
 import com.model.service.MailService;
 import com.util.mail.Mail;
 import com.util.notification.Notification;
-import com.util.notification.NotificationTemplate;
 import com.util.notification.Processors.NotificationProcessor;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,34 +26,24 @@ public class NotificationInterceptor {
     @Autowired
     private NotificationProcessor processor;
 
+    @AfterReturning(value = "@annotation(notification)", returning = "chargeback")
+    public void sendMail(JoinPoint jp, Notification notification, Chargeback chargeback) {
+        System.out.println("sending " + notification.type() + " notification after return from " + jp.getSignature().getName() + " method...");
 
-    @After(value = "@annotation(notification) && args(param )")
-    public void sendMail(JoinPoint jp, Notification notification, Object param) {
-        System.out.println("sending " + notification.type() + " notification after called from " + jp.getSignature().getName() + " method...");
+        if (notification.type() != NotificationType.CHARGEBACK || chargeback == null)
+            return;
 
-        if (notification.type() == NotificationType.CHARGEBACK) {
+        Map<String, Object> model = new HashMap<>();
+        model.put("mensagem", "O seu pedido de Chargeback foi registrado. O acompanhamento pode ser realizado pela plataforma Cabal NET.");
+        model.put("dado", chargeback);
+        String mailContent = processor.process("chargeback/content.ftl", model);
 
-            Chargeback chargeback = (Chargeback) param;
-            NotificationTemplate notificacao = new NotificationTemplate.Builder(
-                    "O seu pedido de Chargeback foi registrado. O acompanhamento pode ser realizado pela plataforma Cabal NET."
-                    , chargeback.getSolicitante()
-                    , chargeback.getNumeroChargeback()
-                    , chargeback.getValorDisputa()
-                    , chargeback.getEntidadeSolicitante()
-                    , chargeback.getEntidadeRequerida()).build();
+        String[] mailFrom = {"nelson.castro@cabal.com.br"};
+        String[] mailTo = {"nelson.castro@cabal.com.br"};
+        String mailSubject = "BANDEIRA - SOLICITAÇÃO DE CHARGEBACK";
 
-            Map<String, Object> model = new HashMap<>();
-            model.put("dado", notificacao);
+        Mail mail = new Mail.Builder(mailFrom[0], mailTo[0], mailSubject, mailContent).build();
 
-            // obter todos os remetentes do emissor e adquirente para envio de notificação
-
-            String[] mailTo = {"sobrinhos@tiopatinhas.com"};
-
-            Mail mail = new Mail.Builder("atendimento@bandeira.com", mailTo[0], "BANDEIRA - SOLICITAÇÃO DE CHARGEBACK",
-                    processor.process("chargeback/content.ftl", model)).build();
-
-            mailService.sendMail(mail);
-        }
-
+        mailService.sendMail(mail);
     }
 }
