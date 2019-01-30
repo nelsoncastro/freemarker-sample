@@ -1,6 +1,5 @@
 package com;
 
-import com.config.ApplicationConfig;
 import com.model.entity.Chargeback;
 import com.model.service.ChargebackService;
 import org.junit.Assert;
@@ -13,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class)
+@ContextConfiguration({"classpath*:applicationContext.xml"})
 public class InterceptorTest {
 
     @Autowired
