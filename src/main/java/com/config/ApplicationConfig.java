@@ -1,21 +1,17 @@
 package com.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 
 import java.util.Properties;
 
-@Configuration
-@ComponentScan(basePackages = "com")
-@EnableAspectJAutoProxy
+//@Configuration
+//@ComponentScan(basePackages = "com")
+//@EnableAspectJAutoProxy
 public class ApplicationConfig {
 
-    @Bean
+    //  @Bean
     public JavaMailSender getMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
@@ -35,7 +31,7 @@ public class ApplicationConfig {
         return mailSender;
     }
 
-    @Bean
+    //    @Bean
     public FreeMarkerConfigurationFactoryBean getFreeMarkerConfiguration() {
         FreeMarkerConfigurationFactoryBean cfg = new FreeMarkerConfigurationFactoryBean();
         cfg.setTemplateLoaderPath("/templates/");
